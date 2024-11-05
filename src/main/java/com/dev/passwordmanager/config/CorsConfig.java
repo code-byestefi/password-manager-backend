@@ -19,7 +19,9 @@ public class CorsConfig {
         // Orígenes permitidos
         configuration.setAllowedOrigins(Arrays.asList(
                 "http://localhost:3000", // Frontend en desarrollo
-                "http://localhost:5173"  // Frontend en Vite (si lo usas)
+                "http://localhost:5173",  // Frontend en Vite (si lo usas)
+                "https://passwords-manager-frontend.netlify.app/"
+
         ));
 
         // Métodos HTTP permitidos
