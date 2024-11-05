@@ -1,1 +1,1 @@
-web: chmod +x wait-for-db.sh && ./wait-for-db.sh
+web: java -jar target/*.jar

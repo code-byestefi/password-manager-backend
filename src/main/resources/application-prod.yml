@@ -3,10 +3,15 @@ spring:
     activate:
       on-profile: prod
   datasource:
-    url: ${DATABASE_URL}
+    url: ${JDBC_DATABASE_URL:${DATABASE_URL}}
     username: ${PGUSER}
     password: ${PGPASSWORD}
     driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 5
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
   jpa:
     show-sql: false
     hibernate:
@@ -34,6 +39,8 @@ spring:
 
 server:
   port: ${PORT:8080}
+  error:
+    include-message: always
   cors:
     allowed-origins: ${ALLOWED_ORIGINS}
     allowed-methods: GET,POST,PUT,DELETE,OPTIONS
@@ -43,3 +50,10 @@ server:
 jwt:
   secret: ${JWT_SECRET}
   expiration: 86400000
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.hibernate: ERROR
+    com.dev.passwordmanager: DEBUG
