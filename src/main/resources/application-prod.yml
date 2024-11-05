@@ -9,14 +9,13 @@ spring:
     driver-class-name: org.postgresql.Driver
     hikari:
       maximum-pool-size: 5
-      connection-timeout: 30000
   jpa:
-    show-sql: false
     hibernate:
       ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
   mail:
     host: smtp.gmail.com
     port: 587
@@ -37,8 +36,6 @@ spring:
 
 server:
   port: ${PORT:8080}
-  error:
-    include-message: always
   cors:
     allowed-origins: ${ALLOWED_ORIGINS}
     allowed-methods: GET,POST,PUT,DELETE,OPTIONS
