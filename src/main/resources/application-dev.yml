@@ -1,0 +1,42 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:postgresql://localhost:5432/password_manager
+    username: postgres
+    password: postgres
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  application:
+    mail:
+      from: no-reply@passing.com
+      verification-subject: "Verifica tu cuenta"
+      verification-template: "Tu código de verificación es: %s"
+      expiration-minutes: 10
+
+server:
+  port: 8080
+  cors:
+    allowed-origins: http://localhost:5173
+    allowed-methods: GET,POST,PUT,DELETE,OPTIONS
+    allowed-headers: Authorization,Content-Type
+    allow-credentials: true
+
+jwt:
+  secret: 2A472D4B6150645367566B58703273357638792F423F4528482B4D6251655468
+  expiration: 86400000
+
