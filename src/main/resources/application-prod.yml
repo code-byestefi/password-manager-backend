@@ -3,15 +3,13 @@ spring:
     activate:
       on-profile: prod
   datasource:
-    url: ${JDBC_DATABASE_URL:${DATABASE_URL}}
+    url: jdbc:postgresql://${PGHOST}:${PGPORT}/${PGDATABASE}
     username: ${PGUSER}
     password: ${PGPASSWORD}
     driver-class-name: org.postgresql.Driver
     hikari:
       maximum-pool-size: 5
       connection-timeout: 30000
-      idle-timeout: 600000
-      max-lifetime: 1800000
   jpa:
     show-sql: false
     hibernate:
@@ -50,10 +48,3 @@ server:
 jwt:
   secret: ${JWT_SECRET}
   expiration: 86400000
-
-logging:
-  level:
-    root: INFO
-    org.springframework.web: INFO
-    org.hibernate: ERROR
-    com.dev.passwordmanager: DEBUG
