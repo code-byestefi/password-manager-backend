@@ -86,6 +86,30 @@ Implementa las mejores prácticas de seguridad, incluyendo autenticación de dos
   - Obtiene la contraseña desencriptada
   - Headers: Authorization Bearer Token
   - Retorna: Contraseña en texto plano
+ 
+## Generador de Contraseñas
+
+### Generación de Contraseñas Seguras
+- `POST /api/passwords/generator`
+  - Genera una contraseña segura
+  - Headers: Authorization Bearer Token
+  - Body (opcional):
+    ```json
+    {
+      "length": number,
+      "includeUppercase": boolean,
+      "includeLowercase": boolean,
+      "includeNumbers": boolean,
+      "includeSpecialChars": boolean
+    }
+    ```
+  - Retorna:
+    ```json
+    {
+      "password": string,
+      "strength": string
+    }
+    ```
 
 ## Gestión de Categorías
 
@@ -111,6 +135,29 @@ Implementa las mejores prácticas de seguridad, incluyendo autenticación de dos
   - Elimina una categoría
   - Headers: Authorization Bearer Token
   - Retorna: 204 No Content
+
+### Gestión de Imagen de Perfil
+- `POST /api/profile/image`
+  - Actualiza la imagen de perfil
+  - Headers: Authorization Bearer Token
+  - Content-Type: multipart/form-data
+  - Body: FormData con campo "image"
+  - Retorna: ID de la foto y mensaje de confirmación
+
+- `GET /api/profile/image/{id}`
+  - Obtiene una imagen específica
+  - Headers: Authorization Bearer Token
+  - Retorna: Imagen en formato JPEG
+
+- `GET /api/profile/image`
+  - Obtiene la imagen de perfil actual
+  - Headers: Authorization Bearer Token
+  - Retorna: Imagen en formato JPEG
+
+- `DELETE /api/profile/image`
+  - Elimina la imagen de perfil
+  - Headers: Authorization Bearer Token
+  - Retorna: Mensaje de confirmación
 
 ## Detalles de Implementación
 
